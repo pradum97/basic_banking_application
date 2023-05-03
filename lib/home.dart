@@ -35,7 +35,8 @@ class _HomeState extends State<Home> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: const Text("HOME PAGE")
+        toolbarHeight: 40,
+        title: const Text("Home Page")
         ,
       ),
       body: SingleChildScrollView(

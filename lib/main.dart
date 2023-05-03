@@ -13,8 +13,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dbHelper.init();
   generateCustomer();
-  runApp( MyApp());
+  runApp(MyApp());
 }
+
 void generateCustomer() {
   DatabaseHelper().queryRowCount().then((value) {
     if (value < 50) {
@@ -46,8 +47,7 @@ void generateCustomer() {
             customerPhone: phone,
             customerEmail: email,
             customerAccountNumber: "12$i",
-          balance:balance
-        );
+            balance: balance);
 
         list.add(model);
       }
@@ -63,18 +63,15 @@ void generateCustomer() {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Banking App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
       home: const Home(),
     );
   }
-
 }
