@@ -36,8 +36,7 @@ class _HomeState extends State<Home> {
         child: Scaffold(
       appBar: AppBar(
         toolbarHeight: 40,
-        title: const Text("Home Page")
-        ,
+        title: const Text("Home Page"),
       ),
       body: SingleChildScrollView(
         physics: ScrollPhysics(),
@@ -68,21 +67,24 @@ class _HomeState extends State<Home> {
                           child: const Text("Customer Not Available."),
                         )
                       : Padding(
-                        padding:  EdgeInsets.only(left: 5,right: 5),
-                        child: Card(
+                          padding: EdgeInsets.only(left: 5, right: 5),
+                          child: Card(
                             elevation: 5,
-                          shape:  BeveledRectangleBorder(
-                                side: BorderSide(color: Colors.blueAccent, width: 1),
-                                borderRadius:  BorderRadius.all(Radius.circular(5))),
+                            shape: BeveledRectangleBorder(
+                                side: BorderSide(
+                                    color: Colors.blueAccent, width: 1),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5))),
                             child: Container(
                               margin: EdgeInsets.all(0),
                               child: ListTile(
-                                onTap: (){
-
+                                onTap: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => TransferSelector(customerModel.customerId,customerModel.balance),
+                                        builder: (context) => TransferSelector(
+                                            customerModel.customerId,
+                                            customerModel.balance),
                                       ));
                                 },
                                 title: Text("${customerModel.customerName}"),
@@ -93,25 +95,29 @@ class _HomeState extends State<Home> {
                                 ),
                                 subtitle: Text(
                                     "AC Number:${customerModel.customerAccountNumber}"),
-
                                 trailing: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "₹",style: TextStyle(
-                                        color:customerModel.balance <1 ? Colors.red: Colors.green
-                                    ),),
-
+                                      "₹",
+                                      style: TextStyle(
+                                          color: customerModel.balance < 1
+                                              ? Colors.red
+                                              : Colors.green),
+                                    ),
                                     Text(
-                                      "${customerModel.balance}",style: TextStyle(
-                                         color:customerModel.balance <1 ? Colors.red: Colors.green
-                                    ),),
+                                      "${customerModel.balance}",
+                                      style: TextStyle(
+                                          color: customerModel.balance < 1
+                                              ? Colors.red
+                                              : Colors.green),
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
-                      );
+                        );
                 })
           ],
         ),

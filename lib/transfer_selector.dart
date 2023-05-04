@@ -26,7 +26,9 @@ class _HomeState extends State<TransferSelector> {
   }
 
   void getAllCustomer() {
-    DatabaseHelper().getAllTransferCustomer(widget.mainCustomerId!).then((value) {
+    DatabaseHelper()
+        .getAllTransferCustomer(widget.mainCustomerId!)
+        .then((value) {
       setState(() {
         customers = value;
       });
@@ -204,15 +206,18 @@ class _HomeState extends State<TransferSelector> {
                               actions: [
                                 ElevatedButton(
                                     onPressed: () {
-                                      Navigator.of(context).popUntil((route) => route.isFirst);
+                                      Navigator.of(context)
+                                          .popUntil((route) => route.isFirst);
                                       Navigator.pushReplacement(context,
                                           MaterialPageRoute(builder: (context) {
                                         return Home();
                                       }));
                                     },
                                     style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(Colors.green),),
-
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Colors.green),
+                                    ),
                                     child: const Text("GO TO HOME PAGE"))
                               ],
                             );

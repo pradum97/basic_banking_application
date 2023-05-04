@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:basic_banking_application/home.dart';
 import 'package:basic_banking_application/model/Model.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +14,7 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-void generateCustomer() {
+ void generateCustomer() {
   DatabaseHelper().queryRowCount().then((value) {
     if (value < 50) {
       List<CustomerModel> list = [];

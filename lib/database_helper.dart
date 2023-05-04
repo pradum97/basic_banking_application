@@ -57,7 +57,8 @@ class DatabaseHelper {
     return await _db!.query(table);
   }
 
-  Future<List<Map<String, dynamic>>> getAllTransferCustomer(int customer_id) async {
+  Future<List<Map<String, dynamic>>> getAllTransferCustomer(
+      int customer_id) async {
     return await await _db!.rawQuery(
         'SELECT * FROM $table where $customerId NOT IN ($customer_id)');
   }
@@ -73,7 +74,8 @@ class DatabaseHelper {
   }
 
   Future<double> checkBalanceByCustomerId(int customer_id) async {
-    final results = await _db!.rawQuery('SELECT $balance FROM $table where $customerId = $customer_id');
+    final results = await _db!.rawQuery(
+        'SELECT $balance FROM $table where $customerId = $customer_id');
     List<Map<String, dynamic>> data = results;
     return double.parse(data[0][balance].toString());
   }

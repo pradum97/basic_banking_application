@@ -10,32 +10,30 @@ class CustomerModel {
   String customerAccountNumber;
   double balance;
 
-  CustomerModel({
-    required this.customerId,
-    required this.customerName,
-    required this.customerFatherName,
-    required this.customerMotherName,
-    required this.customerDateOfBirth,
-    required this.customerAddress,
-    required this.customerPhone,
-    required this.customerEmail,
-    required this.customerAccountNumber,
-    required this.balance
-  });
+  CustomerModel(
+      {required this.customerId,
+      required this.customerName,
+      required this.customerFatherName,
+      required this.customerMotherName,
+      required this.customerDateOfBirth,
+      required this.customerAddress,
+      required this.customerPhone,
+      required this.customerEmail,
+      required this.customerAccountNumber,
+      required this.balance});
 
   factory CustomerModel.fromJson(Map<String, dynamic> json) {
     return CustomerModel(
-      customerId: json['customer_id'],
-      customerName: json['customer_name'],
-      customerFatherName: json['customer_father_name'],
-      customerMotherName: json['customer_mother_name'],
-      customerDateOfBirth: json['customer_dob'],
-      customerAddress: json['customer_address'],
-      customerPhone: json['customer_phone'],
-      customerEmail: json['customer_email'],
-      customerAccountNumber: json['customer_account_number'],
-      balance: double.parse(json['balance'].toString())
-    );
+        customerId: json['customer_id'],
+        customerName: json['customer_name'],
+        customerFatherName: json['customer_father_name'],
+        customerMotherName: json['customer_mother_name'],
+        customerDateOfBirth: json['customer_dob'],
+        customerAddress: json['customer_address'],
+        customerPhone: json['customer_phone'],
+        customerEmail: json['customer_email'],
+        customerAccountNumber: json['customer_account_number'],
+        balance: double.parse(json['balance'].toString()));
   }
 
   Map<String, dynamic> toJson() {
