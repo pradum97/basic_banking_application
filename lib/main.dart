@@ -14,12 +14,12 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
- void generateCustomer() {
-  DatabaseHelper().queryRowCount().then((value) {
-    if (value < 50) {
+ Future<void> generateCustomer() async {
+  await DatabaseHelper().queryRowCount().then((value) {
+    if (value < 10) {
       List<CustomerModel> list = [];
 
-      for (int i = 0; i < 50; i++) {
+      for (int i = 0; i < 10; i++) {
         var name = faker.person.firstName() + " " + faker.person.lastName();
         var fatherName =
             faker.person.firstName() + " " + faker.person.lastName();

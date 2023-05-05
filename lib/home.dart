@@ -1,3 +1,4 @@
+import 'package:basic_banking_application/transactionHistory.dart';
 import 'package:basic_banking_application/transfer_selector.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/cupertino.dart';
@@ -36,8 +37,74 @@ class _HomeState extends State<Home> {
         child: Scaffold(
       appBar: AppBar(
         toolbarHeight: 40,
-        title: const Text("Home Page"),
+        title: const Text("Bank Application"),
       ),
+
+      drawer: Drawer(
+        child: ListView(
+
+          children: [
+             DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child:Column(
+
+                children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      alignment:Alignment.center ,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(80),
+                            //set border radius more than 50% of height and width to make circle
+                          ),
+                        child: IconButton(onPressed: (){ Navigator.pop(context);},
+                            icon: Icon(Icons.keyboard_double_arrow_left_outlined,
+                              color: Colors.red,size: 18,)),
+                      ),
+                    ),
+                  )
+                  ,
+                   Container(
+                       margin: EdgeInsets.only(top: 30),
+                       child: Text("Banking Application",
+                         style: TextStyle(fontSize: 20,color: Colors.white),))
+
+                ],
+              ),
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.home,
+              ),
+              title: const Text('HOME'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.history,
+              ),
+              title: const Text('TRANSACTION HISTORY'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TransactionHistory(),
+                    ));
+              },
+            ),
+          ],
+        ),
+      ),
+
       body: SingleChildScrollView(
         physics: ScrollPhysics(),
         child: Column(
@@ -47,7 +114,7 @@ class _HomeState extends State<Home> {
                 Container(
                     margin: EdgeInsets.only(top: 10),
                     alignment: Alignment.topCenter,
-                    child: Text("ALL CUSTOMER")),
+                    child: Text("All Customers")),
                 Divider(
                   thickness: 2,
                 ),

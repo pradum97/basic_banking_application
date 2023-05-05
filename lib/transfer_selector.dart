@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:basic_banking_application/model/TransactionModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'database_helper.dart';
@@ -186,6 +189,27 @@ class _HomeState extends State<TransferSelector> {
                           customerAccountNumber,
                           double.parse(
                               transferMoneyController.text.toString()));
+
+                      DateTime now = new DateTime.now();
+
+                      Random random = new Random();
+                      int id = random.nextInt(99999);
+
+                      TransactionModel tm =    TransactionModel(
+                          transactionId: id,
+                          fromAccountNumber: mainCustomerId,
+                          beneficiaryAccountNumber:
+                              int.parse(customerAccountNumber),
+                          transactionAmount: double.tryParse(
+                              transferMoneyController.text.toString()),
+                          transactionDate:
+                              new DateTime(now.year, now.month, now.day)
+                                  .toString(),
+                          transactionType: "ONLINE");
+
+
+                      var map = tm.toJson();
+                      DatabaseHelper().insertInTransaction(map);
 
                       showDialog(
                           barrierDismissible: false,

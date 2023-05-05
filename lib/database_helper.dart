@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
@@ -19,11 +18,24 @@ class DatabaseHelper {
   String customerAccountNumber = "customer_account_number";
   String balance = "balance";
 
+
+  // transaction table
+  String tbl_transaction = 'tbl_transaction';
+
+  String transactionId= 'transactionId';
+  String fromAccountNumber = 'fromAccountNumber';
+  String beneficiaryAccountNumber = 'beneficiaryAccountNumber';
+  String transactionAmount = 'transactionAmount';
+  String transactionDate = 'transactionDate';
+  String transactionType = 'transactionType';
+
   static Database? _db;
 
   Future<void> init() async {
     final documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, _databaseName);
+
+    print('delete...... ${_db?.delete(path)}');
 
     _db = await openDatabase(
       path,
@@ -31,6 +43,7 @@ class DatabaseHelper {
       onCreate: _onCreate,
     );
   }
+
 
   Future _onCreate(Database db, int version) async {
     await db.execute('''
@@ -47,14 +60,36 @@ class DatabaseHelper {
             $balance NUMERIC NOT NULL
           )
           ''');
+
+    await db.execute('''
+    
+     CREATE TABLE $tbl_transaction (
+            $transactionId INTEGER PRIMARY KEY,
+            $fromAccountNumber INT NOT NULL,
+            $beneficiaryAccountNumber INT NOT NULL,
+            $transactionAmount NUMERIC NOT NULL,
+            $transactionDate TEXT NOT NULL,
+            $transactionType TEXT NOT NULL
+          )
+          
+    ''');
+
   }
 
   Future<int> insert(Map<String, dynamic> row) async {
     return await _db!.insert(table, row);
   }
 
+  Future<int> insertInTransaction(Map<String, dynamic> row) async {
+    return await _db!.insert(tbl_transaction, row);
+  }
+
   Future<List<Map<String, dynamic>>> queryAllRows() async {
     return await _db!.query(table);
+  }
+
+  Future<List<Map<String, dynamic>>> getAllTransactionHistory() async {
+    return await _db!.query(tbl_transaction);
   }
 
   Future<List<Map<String, dynamic>>> getAllTransferCustomer(
