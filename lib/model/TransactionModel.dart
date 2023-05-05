@@ -7,12 +7,12 @@ class TransactionModel {
   String? transactionType;
 
   TransactionModel({
-   required this.transactionId,
-  required  this.fromAccountNumber,
-   required this.beneficiaryAccountNumber,
-   required this.transactionAmount,
-   required this.transactionDate,
-   required this.transactionType,
+    required this.transactionId,
+    required this.fromAccountNumber,
+    required this.beneficiaryAccountNumber,
+    required this.transactionAmount,
+    required this.transactionDate,
+    required this.transactionType,
   });
 
   factory TransactionModel.fromJson(Map<String, dynamic> json) {

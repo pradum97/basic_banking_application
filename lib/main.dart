@@ -14,7 +14,7 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
- Future<void> generateCustomer() async {
+Future<void> generateCustomer() async {
   await DatabaseHelper().queryRowCount().then((value) {
     if (value < 10) {
       List<CustomerModel> list = [];

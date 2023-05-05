@@ -195,7 +195,7 @@ class _HomeState extends State<TransferSelector> {
                       Random random = new Random();
                       int id = random.nextInt(99999);
 
-                      TransactionModel tm =    TransactionModel(
+                      TransactionModel tm = TransactionModel(
                           transactionId: id,
                           fromAccountNumber: mainCustomerId,
                           beneficiaryAccountNumber:
@@ -206,7 +206,6 @@ class _HomeState extends State<TransferSelector> {
                               new DateTime(now.year, now.month, now.day)
                                   .toString(),
                           transactionType: "ONLINE");
-
 
                       var map = tm.toJson();
                       DatabaseHelper().insertInTransaction(map);

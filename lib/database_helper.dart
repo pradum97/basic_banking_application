@@ -18,11 +18,10 @@ class DatabaseHelper {
   String customerAccountNumber = "customer_account_number";
   String balance = "balance";
 
-
   // transaction table
   String tbl_transaction = 'tbl_transaction';
 
-  String transactionId= 'transactionId';
+  String transactionId = 'transactionId';
   String fromAccountNumber = 'fromAccountNumber';
   String beneficiaryAccountNumber = 'beneficiaryAccountNumber';
   String transactionAmount = 'transactionAmount';
@@ -43,7 +42,6 @@ class DatabaseHelper {
       onCreate: _onCreate,
     );
   }
-
 
   Future _onCreate(Database db, int version) async {
     await db.execute('''
@@ -73,7 +71,6 @@ class DatabaseHelper {
           )
           
     ''');
-
   }
 
   Future<int> insert(Map<String, dynamic> row) async {
